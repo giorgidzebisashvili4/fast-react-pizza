@@ -10,32 +10,28 @@ import AppLayout from "./ui/AppLayout.jsx";
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
         element: <Home />,
-        errorElement: <Error />,
       },
       {
         path: "/menu",
         element: <Menu />,
         loader: menuLoader,
-        errorElement: <Error />,
       },
       {
         path: "/cart",
         element: <Cart />,
-        errorElement: <Error />,
       },
       {
         path: "/order/new",
         element: <CreateOrder />,
-        errorElement: <Error />,
       },
       {
         path: "/order/:orderId",
         element: <Order />,
-        errorElement: <Error />,
       },
     ],
   },
