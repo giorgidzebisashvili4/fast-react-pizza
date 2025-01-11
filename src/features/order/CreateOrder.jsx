@@ -5,7 +5,7 @@ import { createOrder } from "../../services/apiRestaurant";
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
-    str
+    str,
   );
 
 const fakeCart = [
@@ -82,6 +82,7 @@ function CreateOrder() {
         </div>
 
         <div>
+          {/* get the cart data from the loader */}
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
           <button disabled={isSubmitting}>
             {isSubmitting ? "Placing order..." : "Order now"}
@@ -95,7 +96,7 @@ export async function action({ request }) {
   const formData = await request.formData();
 
   const data = Object.fromEntries(formData);
-
+  console.log(data);
   const order = {
     ...data,
     cart: JSON.parse(data.cart),
